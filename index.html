@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Covered California Map</title>
+	<title>Combined Map</title>
 	<link rel="stylesheet" href="leaflet.css" />
 	<script src="leaflet.js"></script>
 	<script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
@@ -36,7 +36,7 @@
 	<div id="map"></div>
 
 	<!-- load the covered california data -->
-	<script type="text/javascript" src="data/covered_ca.geojson"></script>
+	<script type="text/javascript" src="data/combined.geojson"></script>
 
 	<script>
 		// initialize the map
@@ -70,23 +70,23 @@
 
 	// method to update control based on feature properties passed
 	info.update = function (props) {
-		this._div.innerHTML = '<h4>Covered California Coverage</h4>' +  (props ?
-			'<b>' + props.covered_ca_county + '</b><br />' + '% of 18-64 population covered: '+ (props.covered_ca_18_64_enrollees_percent * 100).toFixed(1) + '% (' + numberWithCommas(props.covered_ca_18_64_enrollees) + ')'
+		this._div.innerHTML = '<h4>Combined Coverage</h4>' +  (props ?
+			'<b>' + props.combined_county + '</b><br />' + '% of 18-64 population covered: '+ (props.combined_combined_enrollees_percent * 100).toFixed(1) + '% (' + numberWithCommas(props.combined_combined_enrollees) + ')'
 			: 'Hover over a county');
 	};
 
 	info.addTo(map);
 
-	// get color depending on percent of 18-64 population enrolled in covered california
+	// get color depending on percent of 18-64 population enrolled in either program
 	function getColor(pct) {
-		return pct >= .07 ? '#e31a1c' :
-				pct >= .06  ? '#fd8d3c' :
-				pct >= .05  ? '#fecc5c' :
-				pct >= .02  ? '#ffffb2' :
+		return pct >= .23 ? '#e31a1c' :
+				pct >= .20  ? '#fd8d3c' :
+				pct >= .15  ? '#fecc5c' :
+				pct >= .11  ? '#ffffb2' :
 							'#00FFFFFF';
 	}
 
-	// create a function that returns a color based on percent of 18-64 population enrolled in covered california
+	// create a function that returns a color based on percent of 18-64 population enrolled in either program
 	function style(feature) {
 	return {
 		weight: 2,
@@ -94,7 +94,7 @@
 		color: 'white',
 		dashArray: '3',
 		fillOpacity: 0.7,
-		fillColor: getColor(feature.properties.covered_ca_18_64_enrollees_percent)
+		fillColor: getColor(feature.properties.combined_combined_enrollees_percent)
 		};
 	}
 
@@ -135,7 +135,7 @@
 		});
 	}
 
-	// add covered california layer to the map
+	// add covered combined layer to the map
 	// style the layer
 	// add mouse listeners to the layer
 	geojson = L.geoJson(countyData, {
@@ -143,7 +143,7 @@
 		onEachFeature: onEachFeature
 	}).addTo(map);
 
-	map.attributionControl.addAttribution('Sources: <a href="http://census.gov/" target="_blank">US Census Bureau</a>, <a href="http://http://www.coveredca.com" target="_blank">Coverered California</a>');
+	map.attributionControl.addAttribution('Sources: <a href="http://census.gov/" target="_blank">US Census Bureau</a>, <a href="http://www.dhcs.ca.gov/Pages/default.aspx" target="_blank">California Department of Health Care Services</a>, <a href="http://http://www.coveredca.com" target="_blank">Coverered California</a>');
 
 	// add legend to map
 	var legend = L.control({position: 'bottomleft'});
@@ -151,9 +151,9 @@
 	legend.onAdd = function (map) {
 
 		var div = L.DomUtil.create('div', 'info legend'),
-			grades = [.02, .05, .06, .07],
+			grades = [.11, .15, .20, .23],
 			labels = [],
-			descriptions = [">= 2%", ">= 5%", ">= 6%", ">= 7%"];
+			descriptions = [">= 11%", ">= 15%", ">= 20%", ">= 23%"];
 
 		// loop through pct intervals and generate a label with a colored square for each interval
 		for (var i = 0; i < grades.length; i++) {
