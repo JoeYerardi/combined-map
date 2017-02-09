@@ -135,7 +135,7 @@
 		});
 	}
 
-	// add covered combined layer to the map
+	// add combined layer to the map
 	// style the layer
 	// add mouse listeners to the layer
 	geojson = L.geoJson(countyData, {
@@ -159,7 +159,7 @@
 				'<i style="background:' + getColor(grades[i]) + '"></i>' + descriptions[i]);
 		}
 
-		div.innerHTML = "<h4>Percent of 18-64 Population Covered</h4>" + labels.join('<br>') + '<div>Sources: U.S. Census Bureau, Covered California, California Department of Health Care Services</div>';
+		div.innerHTML = "<h4>Percent of 18-64 Population Covered</h4>" + labels.join('<br>');
 		return div;
 	};
 
