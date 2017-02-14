@@ -88,10 +88,10 @@
 	// create a function that returns a color based on percent of 18-64 population enrolled in either program
 	function style(feature) {
 	return {
-		weight: 2,
+		weight: 1,
 		opacity: 1,
 		color: 'white',
-		dashArray: '1',
+		dashArray: '3',
 		fillOpacity: 0.7,
 		fillColor: getColor(feature.properties.combined_combined_enrollees_percent)
 		};
