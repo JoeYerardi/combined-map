@@ -70,7 +70,7 @@
 	// method to update control based on feature properties passed
 	info.update = function (props) {
 		this._div.innerHTML = '<h4>Combined Coverage</h4>' +  (props ?
-			'<b>' + props.combined_county + '</b><br />' + '18-64 Population: ' + <br /> + props.combined_18_64_pop + 'Percent covered: '+ (props.combined_combined_enrollees_percent * 100).toFixed(1) + '% (' + numberWithCommas(props.combined_combined_enrollees) + ')'
+			'<b>' + props.combined_county + '</b><br />' + '18-64 Population: ' + '<br />' + props.combined_18_64_pop + 'Percent covered: '+ (props.combined_combined_enrollees_percent * 100).toFixed(1) + '% (' + numberWithCommas(props.combined_combined_enrollees) + ')'
 			: 'Hover over a county');
 	};
 
