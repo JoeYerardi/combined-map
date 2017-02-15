@@ -152,7 +152,9 @@
 	geojson = L.geoJson(countyData, {
       style: style,
       onEachFeature: function( feature, layer ){
-        layer.bindPopup('popup')
+        layer.bindPopup('<h4>Combined Coverage</h4>' +  (props ?
+			'<b>' + props.combined_county + '</b><br />' + '18-64 Population: ' + numberWithCommas(props.combined_18_64_pop) + '<br />' + 'Percent Covered: ' + (props.combined_combined_enrollees_percent * 100).toFixed(1) + '% (' + numberWithCommas(props.combined_combined_enrollees) + ')'
+			: 'Hover over a county'))
       }
     }).addTo(map);
 	}
