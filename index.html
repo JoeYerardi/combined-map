@@ -148,6 +148,7 @@
 		onEachFeature: onEachFeature
 	}).addTo(map);
 
+	if (L.Browser.mobile) {
 	geojson = L.geoJson(countyData, {
       style: style,
       onEachFeature: function( feature, layer ){
