@@ -152,7 +152,7 @@
 	geojson = L.geoJson(countyData, {
       style: style,
       onEachFeature: function( feature, layer ){
-        layer.bindPopup(props.combined_county)
+        layer.bindPopup('popup')
       }
     }).addTo(map);
 	}
