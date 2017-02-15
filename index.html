@@ -143,8 +143,10 @@
 		onEachFeature: onEachFeature
 	}).addTo(map);
 
-	// add legend to map
-	var legend = L.control({position: 'bottomleft'});
+	// add legend to map unless browser is mobile
+	if (!L.Browser.mobile) {
+    var legend = L.control({position: 'bottomleft'});
+	}
 
 	legend.onAdd = function (map) {
 
