@@ -54,8 +54,10 @@
 		id: 'mapbox.light'
 	}).addTo(map);
 
-	// control that shows county info on hover
+	// control that shows county info on hover unless browser is mobile
+	if (!L.Browser.mobile) {
 	var info = L.control();
+	}
 
 	info.onAdd = function (map) {
 		this._div = L.DomUtil.create('div', 'info');
