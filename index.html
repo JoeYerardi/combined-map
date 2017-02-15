@@ -57,14 +57,12 @@
 	// define info box variable
 	var info = L.control();
 
-	// control that shows county info on hover unless browser is mobile
-	if (!L.Browser.mobile) {
+	// control that shows county info on hover
 		info.onAdd = function (map) {
 		this._div = L.DomUtil.create('div', 'info');
 		this.update();
 		return this._div;
 	};
-	}
 
 	// function to add thousands separator to info box data
 	function numberWithCommas(x) {
@@ -78,7 +76,10 @@
 			: 'Hover over a county');
 	};
 
+	// add info box to map unless browser is mobile
+	if (!L.Browser.mobile) {
 	info.addTo(map);
+	}
 
 	// get color depending on percent of 18-64 population enrolled in either program
 	function getColor(pct) {
