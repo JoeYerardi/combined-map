@@ -152,7 +152,7 @@
 	geojson = L.geoJson(countyData, {
       style: style,
       onEachFeature: function( feature, layer ){
-        layer.bindPopup( "<strong>" + feature.combined_county + "</strong><br/>" + feature.combined_18_64_pop + " rats per square mile" )
+        layer.bindPopup( "<strong>" + feature.properties.combined_county + "</strong><br/>" + feature.properties.combined_18_64_pop + " rats per square mile" )
       }
     }).addTo(map);
 	}
