@@ -54,14 +54,17 @@
 		id: 'mapbox.light'
 	}).addTo(map);
 
-	// control that shows county info on hover
+	// define info box variable
 	var info = L.control();
 
-	info.onAdd = function (map) {
+	// control that shows county info on hover unless browser is mobile
+	if (!L.Browser.mobile) {
+		info.onAdd = function (map) {
 		this._div = L.DomUtil.create('div', 'info');
 		this.update();
 		return this._div;
 	};
+	}
 
 	// function to add thousands separator to info box data
 	function numberWithCommas(x) {
