@@ -148,6 +148,7 @@
 		onEachFeature: onEachFeature
 	}).addTo(map);
 
+	// add popup markers to the map if browser is mobile
 	if (L.Browser.mobile) {
 	geojson = L.geoJson(countyData, {
       style: style,
